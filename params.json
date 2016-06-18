@@ -1,0 +1,6 @@
+{
+  "name": "Instalação do Zoneminder em sistema Debian.",
+  "tagline": "",
+  "body": "Este será um tutorial de como instalar o gerenciador de sistemas de Circuito Fechado (CFTV) Zoneminder em um sistema linux Debian 8.1 and 8.2 com arquitetura Amd64(Jessie).\r\n\r\n### Primeiro passo\r\n\r\nO primeiro passo e importante dessa instalação, é que será necessário dentro do terminal está com acesso de _root_.\r\n\r\n`sudo su`\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
