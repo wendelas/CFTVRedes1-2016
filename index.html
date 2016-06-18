@@ -27,15 +27,14 @@
         <section id="main_content">
           <p>Este será um tutorial de como instalar o gerenciador de sistemas de Circuito Fechado (CFTV) Zoneminder em um sistema linux Debian 8.1 and 8.2 com arquitetura Amd64(Jessie).</p>
 
-<h3>
-<a class="anchor" aria-hidden="true"><span aria-hidden="true" class="octicon"></span></a>Primeiro passo</h3>
+<h3><a class="anchor" aria-hidden="true"><span aria-hidden="true" class="octicon"></span></a>Primeiro passo</h3>
 
 <p>O primeiro passo e importante dessa instalação, é que será necessário dentro do terminal está com acesso de <em>root</em>.</p>
 
 <p><code>sudo su</code></p>
         </section>
         
-<a class="anchor" aria-hidden="true"><span aria-hidden="true" class="octicon"></span></a>Segundo passo</h3>
+<h3><a class="anchor" aria-hidden="true"><span aria-hidden="true" class="octicon"></span></a>Segundo passo</h3>
 
 <p>Este segundo passo, serão realizadas as instalações e configurações das dependencias necessárias para rodar o sistema. Então inicialmente rodaremos o seguinte comando para instalção:</p>
 
@@ -54,6 +53,14 @@
 <p><code>apt-get update</code></p>
 <p><code>apt-get upgrade</code></p>
 <p><code>apt-get dist-upgrade</code></p>
+
+<h3><a class="anchor" aria-hidden="true"><span aria-hidden="true" class="octicon"></span></a>Terceiro passo</h3>
+
+<p>Agora, é o momento de instalar o Zoneminder no seu sistema, para isso basta rodar:</p>
+<p><code> apt-get install zoneminder </code></p>
+
+<p> Depois de instalar o zoneminder e suas dependencias, ainda será necessário instalar alguns componentes do VLC, que para alguns não é necessários, mas em outros sistemas e versões de câmeras são:</p>
+<p><code>apt-get install libvlc-dev libvlccore-dev vlc</code></p>
 
 <footer>
           Instalação do Zoneminder em sistema Debian. is maintained by <a href="https://github.com/MatheusGodinho">MatheusGodinho</a><br>
