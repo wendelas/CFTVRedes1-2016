@@ -10,7 +10,7 @@
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <title>Instalação do Zoneminder em sistema Debian. by MatheusGodinho</title>
+    <title>Tutorial Zoneminder Debian</title>
   </head>
 
   <body>
@@ -61,6 +61,55 @@
 
 <p> Depois de instalar o zoneminder e suas dependencias, ainda será necessário instalar alguns componentes do VLC, que para alguns não é necessários, mas em outros sistemas e versões de câmeras são:</p>
 <p><code>apt-get install libvlc-dev libvlccore-dev vlc</code></p>
+
+<h3><a class="anchor" aria-hidden="true"><span aria-hidden="true" class="octicon"></span></a>Quarto passo</h3>
+
+<p>Este passo agora, consiste na configuração do Zoneminder com o MySql, que é a sua base de dados, então a primeira coisa a se fazer, é ir até a raiz do seu sistema e criar um arquivo de senha temporária</p>
+
+<p><code>cd ~</code></p>
+<p><code>nano .my.cnf</code></p>
+
+<p>Adicione o seguinte conteúdo:</p>
+<code> 
+  [client]<br>
+  user=root<br>
+  password=(mysqlpass)
+</code>
+
+<p><br>Para atualizar a base de dados, utilize os seguintes comandos MySql:</p>
+
+<p><code>mysql < /usr/share/zoneminder/db/zm_create.sql</code></p>
+<p><code>mysql -e "grant select,insert,update,delete,create on zm.* to 'zmuser'@localhost identified by 'zmpass';"</code></p>
+
+<p>E remova então o arquivo temporário:</p>
+<p><code>rm .my.cnf</code></p>
+
+<p>E por ultimo autorize o root:www-data 740</p>
+<p><code>chmod 740 /etc/zm/zm.conf</code></p>
+<p><code>chown root:www-data /etc/zm/zm.conf</code></p>
+
+<h3><a class="anchor" aria-hidden="true"><span aria-hidden="true" class="octicon"></span></a>Quinto passo</h3>
+<p>O ultimo passo são as configurações finais para utilização do Zoneminder. A primeira configuração é deixar o serviço do Zoneminder ativado junto com a inicialização do sistema:</p>
+<p><code>systemctl enable zoneminder.service</code></p>
+
+<p>Agora, iremos adicionar o www-data ao grupo sudo para poder usar dispositivos locais de videos.</p>
+<p><code>adduser www-data video</code></p>
+
+<p>Após isso, inicialize o serviço do zoneminder.</p>
+<p><code>systemctl start zoneminder.service</code></p>
+
+<p>E em seguida verifique o seu status no sistema.</p>
+<p><code>systemctl status zoneminder.service</code></p>
+
+<p>Por ultimo, iremos adicionar e ativar as configurações do Zoneminder e do CGI junto ao apache:</p>
+<p><code>a2enmod cgi</code></p>
+<p><code>a2enconf zoneminder</code></p>
+
+<p>E para concluir todo o processo e utilizar o Zominder só reinicie o Apache na máquina.</p>
+
+<p><code>service apache2 restart</code></p>
+
+<p>Pronto, todo o processo concluído, para acessar o servidor criado para acessar a url <a href="http://serverip/zm">http://serverip/zm</a></p>
 
 <footer>
           Instalação do Zoneminder em sistema Debian. is maintained by <a href="https://github.com/MatheusGodinho">MatheusGodinho</a><br>
